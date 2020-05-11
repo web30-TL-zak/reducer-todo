@@ -17,7 +17,7 @@ function App () {
     <div className='App'>
       <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} value={value}/>
 
-      <List todos={state} />
+      <List todos={state} toggleTodo={toggleTodo} />
     </div>
   )
 
@@ -33,6 +33,15 @@ function App () {
       type: 'ADD_TODO',
       payload: {
         item: value
+      }
+    })
+  }
+
+  function toggleTodo (id) {
+    dispatch({
+      type: 'TOGGLE_TODO',
+      payload: {
+        id
       }
     })
   }

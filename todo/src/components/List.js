@@ -1,13 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-const List = ({ todos }) => {
-    return (
-        <div>
-            {
-                todos.map(todo => <p key={todo.id}>{todo.item}</p>)
-            }
-        </div>
-    );
-};
+const List = ({ todos, toggleTodo }) => {
+  return (
+    <div>
+      {todos.map(todo => (
+        <p key={todo.id} onClick={() => toggleTodo(todo.id)}>
+          {todo.item}
+        </p>
+      ))}
+    </div>
+  )
+}
 
-export default List;
+export default List
