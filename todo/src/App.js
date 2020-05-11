@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useReducer, useState, useEffect } from 'react'
+import { reducer, initialState } from './reducers/reducer'
 
-function App() {
+import './App.css'
+import TodoForm from './components/TodoForm'
+import List from './components/List'
+
+function App () {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const [value, setValue] = useState('')
+
+  useEffect(() => {
+    console.log(state)
+  }, [state])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} value={value}/>
+
+      <List todos={state} />
     </div>
-  );
+  )
+
+  /////FUNCTIONS/////
+  function handleChange (e) {
+    setValue(e.target.value)
+  }
+
+  function handleSubmit (e) {
+    e.preventDefault()
+
+    dispatch({
+      type: 'ADD_TODO',
+      payload: {
+        item: value
+      }
+    })
+  }
 }
 
-export default App;
+export default App
