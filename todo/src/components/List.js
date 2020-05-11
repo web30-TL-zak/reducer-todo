@@ -4,7 +4,14 @@ const List = ({ todos, toggleTodo, clearCompleted }) => {
   return (
     <div>
       {todos.map(todo => (
-        <p key={todo.id} onClick={() => toggleTodo(todo.id)}>
+        <p
+          key={todo.id}
+          onClick={() => toggleTodo(todo.id)}
+          style={{
+            cursor: 'pointer',
+            textDecoration: todo.completed ? 'line-through' : 'none'
+          }}
+        >
           {todo.item}
         </p>
       ))}

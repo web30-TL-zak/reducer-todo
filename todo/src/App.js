@@ -15,9 +15,17 @@ function App () {
 
   return (
     <div className='App'>
-      <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} value={value}/>
+      <TodoForm
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+        value={value}
+      />
 
-      <List todos={state} toggleTodo={toggleTodo} clearCompleted={clearCompleted} />
+      <List
+        todos={state}
+        toggleTodo={toggleTodo}
+        clearCompleted={clearCompleted}
+      />
     </div>
   )
 
@@ -46,9 +54,9 @@ function App () {
     })
   }
 
-  function clearCompleted() {
+  function clearCompleted () {
     dispatch({
-      type: "CLEAR_COMPLETED_TODOS"
+      type: 'CLEAR_COMPLETED_TODOS'
     })
   }
 }
