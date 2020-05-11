@@ -17,7 +17,7 @@ function App () {
     <div className='App'>
       <TodoForm handleSubmit={handleSubmit} handleChange={handleChange} value={value}/>
 
-      <List todos={state} toggleTodo={toggleTodo} />
+      <List todos={state} toggleTodo={toggleTodo} clearCompleted={clearCompleted} />
     </div>
   )
 
@@ -43,6 +43,12 @@ function App () {
       payload: {
         id
       }
+    })
+  }
+
+  function clearCompleted() {
+    dispatch({
+      type: "CLEAR_COMPLETED_TODOS"
     })
   }
 }

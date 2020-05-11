@@ -1,6 +1,6 @@
 import React from 'react'
 
-const List = ({ todos, toggleTodo }) => {
+const List = ({ todos, toggleTodo, clearCompleted }) => {
   return (
     <div>
       {todos.map(todo => (
@@ -8,6 +8,8 @@ const List = ({ todos, toggleTodo }) => {
           {todo.item}
         </p>
       ))}
+
+      <button onClick={clearCompleted}>Clear Completed</button>
     </div>
   )
 }
